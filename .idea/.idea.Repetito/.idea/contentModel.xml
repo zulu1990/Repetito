@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\archi\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\archi\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_Repetito.-1272319850.00" t="ExcludeRecursive" />
+    <e p="C:\Users\archi\AppData\Roaming\JetBrains\Rider2020.2\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\archi\AppData\Roaming\JetBrains\Rider2020.2\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\archi\source\repos\Repetito" t="IncludeFlat">
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Repetito" t="IncludeRecursive">
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Controllers" t="Include">
+          <e p="AuthenticationController.cs" t="Include" />
+        </e>
+        <e p="DependencyInjection.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="net6.0" t="Include">
+              <e p="Repetito.AssemblyInfo.cs" t="Include" />
+              <e p="Repetito.GlobalUsings.g.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Repetito.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="Repetito.Application" t="IncludeRecursive">
+        <e p="Authentication" t="Include">
+          <e p="Commands" t="Include">
+            <e p="Register" t="Include">
+              <e p="RegisterCommand.cs" t="Include" />
+              <e p="RegisterCommandHandler.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Common" t="Include">
+            <e p="AuthenticationResult.cs" t="Include" />
+          </e>
+          <e p="Queries" t="Include">
+            <e p="Login" t="Include">
+              <e p="LoginQuery.cs" t="Include" />
+              <e p="LoginQueryHandler.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Common" t="Include">
+          <e p="Authentication" t="Include">
+            <e p="IJwtTokenGenerator.cs" t="Include" />
+          </e>
+          <e p="Persistance" t="Include">
+            <e p="ITeacherRepository.cs" t="Include" />
+          </e>
+        </e>
+        <e p="DependencyInjection.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="net6.0" t="Include">
+              <e p="Repetito.Application.AssemblyInfo.cs" t="Include" />
+              <e p="Repetito.Application.GlobalUsings.g.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Repetito.Application.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="Repetito.Contracts" t="IncludeRecursive">
+        <e p="Authentication" t="Include">
+          <e p="LoginRequest.cs" t="Include" />
+          <e p="RegisterRequest.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="FOR PRESENTATION API LAYER MODELS.txt" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="net6.0" t="Include">
+              <e p="Repetito.Contracts.AssemblyInfo.cs" t="Include" />
+              <e p="Repetito.Contracts.GlobalUsings.g.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Repetito.Contracts.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="Repetito.Domain" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Entities" t="Include">
+          <e p="Teacher.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="net6.0" t="Include">
+              <e p="Repetito.Domain.AssemblyInfo.cs" t="Include" />
+              <e p="Repetito.Domain.GlobalUsings.g.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Repetito.Domain.csproj" t="IncludeRecursive" />
+        <e p="Result.cs" t="Include" />
+      </e>
+      <e p="Repetito.Infrastructure" t="IncludeRecursive">
+        <e p="Authentication" t="Include">
+          <e p="JwtTokenGenerator.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="DependencyInjection.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="net6.0" t="Include">
+              <e p="Repetito.Infrastructure.AssemblyInfo.cs" t="Include" />
+              <e p="Repetito.Infrastructure.GlobalUsings.g.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Persistance" t="Include">
+          <e p="AppliciationDbContext.cs" t="Include" />
+          <e p="TeacherRepository.cs" t="Include" />
+        </e>
+        <e p="Repetito.Infrastructure.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="Repetito.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>
