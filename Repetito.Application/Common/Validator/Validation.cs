@@ -6,7 +6,7 @@ namespace Repetito.Application.Common.Validator
 {
     public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
         where TRequest : IRequest<TResponse>
-        where TResponse : Result
+
     {
         private readonly IValidator<TRequest>? _validator;
 
@@ -23,12 +23,7 @@ namespace Repetito.Application.Common.Validator
 
             var validationResult = await _validator.ValidateAsync(request, cancellationToken);
 
-            if (validationResult.IsValid)
-            {
-                return await next();
-            }
-            return (dynamic)Result.Fail(validationResult.Errors.FirstOrDefault().ErrorMessage);
-
+            return validationResult.IsValid ? await next() : throw new ValidationException(validationResult.Errors);
         }
     }
 }

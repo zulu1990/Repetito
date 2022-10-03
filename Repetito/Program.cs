@@ -1,5 +1,5 @@
-using Repetito;
 using Repetito.Application;
+using Repetito.Common;
 using Repetito.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 var app = builder.Build();
 {
+    app.UseMiddleware<ExceptionHandlingMiddleware>();
     if (app.Environment.IsDevelopment())
     {
         app.UseSwagger();

@@ -1,13 +1,14 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using FluentValidation.AspNetCore;
+using Microsoft.OpenApi.Models;
 
-namespace Repetito
+namespace Repetito.Common
 {
     public static class DependencyInjection
     {
         public static IServiceCollection AddPresentation(this IServiceCollection services)
         {
             services.AddControllers();
-            
+
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen(c =>
             {
@@ -42,7 +43,7 @@ namespace Repetito
                     }
                 });
             });
-
+            services.AddTransient<ExceptionHandlingMiddleware>();
             return services;
         }
     }
