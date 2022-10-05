@@ -14,7 +14,7 @@ namespace Repetito.Application.Authentication.Queries.Login
     ) : IRequest<Result<AuthenticationResult>>;
 
 
-    public class LoginQueryHandler : IRequestHandler<LoginQuery, Result<AuthenticationResult>>
+    internal class LoginQueryHandler : IRequestHandler<LoginQuery, Result<AuthenticationResult>>
     {
         private readonly IJwtTokenGenerator _jwtTokenGenerator;
         private readonly IGenericRepository<Teacher> _teacherRepository;
