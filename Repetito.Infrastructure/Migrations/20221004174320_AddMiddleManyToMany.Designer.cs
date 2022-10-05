@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repetito.Infrastructure.Persistance;
 
@@ -11,9 +12,10 @@ using Repetito.Infrastructure.Persistance;
 namespace Repetito.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221004174320_AddMiddleManyToMany")]
+    partial class AddMiddleManyToMany
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,44 +23,6 @@ namespace Repetito.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("PupilTeacher", b =>
-                {
-                    b.Property<Guid>("PupilsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("TeachersId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("PupilsId", "TeachersId");
-
-                    b.HasIndex("TeachersId");
-
-                    b.ToTable("PupilTeacher");
-                });
-
-            modelBuilder.Entity("Repetito.Domain.Entities.Feedback", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Comment")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Rating")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("TeacherId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TeacherId");
-
-                    b.ToTable("Feedback");
-                });
 
             modelBuilder.Entity("Repetito.Domain.Entities.Pupil", b =>
                 {
@@ -123,33 +87,51 @@ namespace Repetito.Infrastructure.Migrations
                     b.ToTable("Teachers");
                 });
 
-            modelBuilder.Entity("PupilTeacher", b =>
+            modelBuilder.Entity("Repetito.Domain.Entities.TeacherPupil", b =>
                 {
-                    b.HasOne("Repetito.Domain.Entities.Pupil", null)
-                        .WithMany()
-                        .HasForeignKey("PupilsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<Guid>("TeacherId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.HasOne("Repetito.Domain.Entities.Teacher", null)
-                        .WithMany()
-                        .HasForeignKey("TeachersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<Guid>("PupilId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("TeacherId", "PupilId");
+
+                    b.HasIndex("PupilId");
+
+                    b.ToTable("TeacherPupil");
                 });
 
-            modelBuilder.Entity("Repetito.Domain.Entities.Feedback", b =>
+            modelBuilder.Entity("Repetito.Domain.Entities.TeacherPupil", b =>
                 {
-                    b.HasOne("Repetito.Domain.Entities.Teacher", null)
-                        .WithMany("Feedbacks")
+                    b.HasOne("Repetito.Domain.Entities.Pupil", "Pupil")
+                        .WithMany("Teachers")
+                        .HasForeignKey("PupilId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Repetito.Domain.Entities.Teacher", "Teacher")
+                        .WithMany("Pupils")
                         .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Pupil");
+
+                    b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("Repetito.Domain.Entities.Pupil", b =>
+                {
+                    b.Navigation("Teachers");
                 });
 
             modelBuilder.Entity("Repetito.Domain.Entities.Teacher", b =>
                 {
-                    b.Navigation("Feedbacks");
+                    b.Navigation("Pupils");
                 });
 #pragma warning restore 612, 618
         }

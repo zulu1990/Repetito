@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Repetito.Domain\Repetito.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

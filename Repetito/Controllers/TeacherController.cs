@@ -1,7 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Repetito.Application.Teachers.Commands.GeneratePupil;
+using Repetito.Application.Teachers.Models;
+using Repetito.Common;
+using Repetito.Contracts.Teacher;
 
 namespace Repetito.Controllers
 {
@@ -11,12 +14,48 @@ namespace Repetito.Controllers
     {
         private readonly ISender _mediator;
 
+        public TeacherController(ISender mediator)
+        {
+            _mediator = mediator;
+        }
 
         [Authorize]
         [HttpPost("edit-info")]
         public async Task<IActionResult> Edit()
         {
+            var teacherId = HttpContext.GetUserId();
+
             return Ok();
         }
+
+        [Authorize]
+        [HttpPost("add-pupil")]
+        public async Task<IActionResult> AddPupil(AddPupilModel addPupilModel)
+        {
+            var teacherId = HttpContext.GetUserId();
+            var addPupilCommand = new AddPupilCommand(teacherId, new AddNewPupil(addPupilModel.FirstName, addPupilModel.LastName, addPupilModel.Age));
+
+            var result = await _mediator.Send(addPupilCommand);
+
+            return Ok();
+        }
+
+
+        [Authorize]
+        [HttpPost("generate-pupils")]
+        public async Task<IActionResult> TempPupilCreation()
+        {
+            var teacherId = HttpContext.GetUserId();
+            var command = new GeneratePupilForTeacherCommand(teacherId);
+
+            await _mediator.Send(command);
+
+
+            return Ok();
+        }
+
+
+
+
     }
 }

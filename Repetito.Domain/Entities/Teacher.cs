@@ -11,5 +11,11 @@ namespace Repetito.Domain.Entities
         public City City { get; set; }
         public string Subject { get; set; }
 
+        public byte[] PasswordHash { get; set; }
+        public byte[] PasswordSalt { get; set; }
+
+        public ICollection<Pupil> Pupils { get; set; }
+
+        public ICollection<Feedback> Feedbacks { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repetito.Infrastructure.Persistance;
 
@@ -11,9 +12,10 @@ using Repetito.Infrastructure.Persistance;
 namespace Repetito.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221004184653_RemoveMiddleClasss")]
+    partial class RemoveMiddleClasss
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,29 +37,6 @@ namespace Repetito.Infrastructure.Migrations
                     b.HasIndex("TeachersId");
 
                     b.ToTable("PupilTeacher");
-                });
-
-            modelBuilder.Entity("Repetito.Domain.Entities.Feedback", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Comment")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Rating")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("TeacherId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TeacherId");
-
-                    b.ToTable("Feedback");
                 });
 
             modelBuilder.Entity("Repetito.Domain.Entities.Pupil", b =>
@@ -136,20 +115,6 @@ namespace Repetito.Infrastructure.Migrations
                         .HasForeignKey("TeachersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Repetito.Domain.Entities.Feedback", b =>
-                {
-                    b.HasOne("Repetito.Domain.Entities.Teacher", null)
-                        .WithMany("Feedbacks")
-                        .HasForeignKey("TeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Repetito.Domain.Entities.Teacher", b =>
-                {
-                    b.Navigation("Feedbacks");
                 });
 #pragma warning restore 612, 618
         }

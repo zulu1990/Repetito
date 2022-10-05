@@ -2,12 +2,7 @@
 using Repetito.Application.Common.Persistance;
 using Repetito.Domain;
 using Repetito.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Repetito.Infrastructure.Persistance
 {
@@ -19,17 +14,17 @@ namespace Repetito.Infrastructure.Persistance
         {
             _dbSet = context.Set<T>();
         }
-        public async Task<Result<T>> Add(T entity)
+
+        public async Task<T> Add(T entity)
         {
             var addedEntity = await _dbSet.AddAsync(entity);
 
-            return Result<T>.Succeed(addedEntity.Entity);
+            return addedEntity.Entity;
         }
 
-        public async Task<Result> AddRange(IEnumerable<T> entities)
+        public async Task AddRange(IEnumerable<T> entities)
         {
             await _dbSet.AddRangeAsync(entities);
-            return Result.Succeed();
         }
 
         public Result DeleteEntity(T entity)
@@ -67,14 +62,14 @@ namespace Repetito.Infrastructure.Persistance
                 return Result.Fail(e.Message);
             }
         }
-        public async Task<Result<T>> GetById(long id)
+        public async Task<T> GetById(Guid id)
         {
             var foundEntity = await _dbSet.FindAsync(id);
 
-            return foundEntity == null ? Result<T>.Fail("Not Found") : Result<T>.Succeed(foundEntity);
+            return foundEntity;
         }
 
-        public async Task<Result<IList<T>>> ListAsync(Expression<Func<T, bool>> expression = null, List<string> includes = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, int count = 0, bool trackChanges = false)
+        public async Task<IList<T>> ListAsync(Expression<Func<T, bool>> expression = null, List<string> includes = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, int count = 0, bool trackChanges = false)
         {
             IQueryable<T> query = _dbSet;
 
@@ -91,10 +86,10 @@ namespace Repetito.Infrastructure.Persistance
 
             var result = trackChanges ? await query.ToListAsync() : await query.AsNoTracking().ToListAsync();
 
-            return result.Count > 0 ? Result<IList<T>>.Succeed(result) : Result<IList<T>>.Fail("Not Found");
+            return result;
         }
 
-        public async Task<Result<T>> GetByExpression(Expression<Func<T, bool>> expression, List<string> includes = null, bool trackChanges = false)
+        public async Task<T> GetByExpression(Expression<Func<T, bool>> expression, List<string> includes = null, bool trackChanges = false)
         {
             IQueryable<T> query = _dbSet;
             if (includes != null)
@@ -104,7 +99,10 @@ namespace Repetito.Infrastructure.Persistance
 
             var item = trackChanges ? await query.FirstOrDefaultAsync(expression) : await query.AsNoTracking().FirstOrDefaultAsync(expression);
 
-            return item != null ? Result<T>.Succeed(item) : Result<T>.Fail("Not Found");
+            return item;
         }
+
+
+        
     }
 }

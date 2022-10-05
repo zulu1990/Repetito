@@ -45,26 +45,6 @@ namespace Repetito.Infrastructure.Authentication
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
             return tokenHandler.WriteToken(token);
-        }
-
-        public bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
-        {
-            using var hmac = new HMACSHA512(passwordSalt);
-            var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
-
-            return AreEqualArrays(computedHash, passwordHash);
-        }
-
-        private static bool AreEqualArrays(byte[] computed, byte[] passed)
-        {
-            for (var i = 0; i < computed.Length; i++)
-            {
-                if (computed[i] != passed[i])
-                    return false;
-            }
-
-            return true;
-        }
-       
+        }       
     }
 }
