@@ -71,15 +71,13 @@ public class TeacherController : ControllerBase
 
         if(response.Success)
         {
-            var result = new TeacherFullProfile(response.Data);
+            var result = new TeacherFullProfile(teacher: response.Data);
             return Ok(result);
         }
 
         return BadRequest(response.ErrorMessage);
 
     }
-
-
 
     [HttpGet("get-teachers")]
     public async Task<IActionResult> GetTeachers(TeacherSearchParams teacherSearchParams)
@@ -94,9 +92,9 @@ public class TeacherController : ControllerBase
             MinAge = teacherSearchParams.MinAge
         };
 
-
-
         var response = await _mediator.Send(teacherSeachQuery);
-        return Ok(response.Data);
+
+        return response.Success ? (ActionResult)response.Data.Select(x => new TeacherProfile(x)) : BadRequest();
+        
     }
 }

@@ -5,13 +5,7 @@ using Repetito.Domain.Entities;
 
 namespace Repetito.Application.Parents.Commands.Rating;
 
-public record FeedbackCommand
-(
-    Guid TeacherId,
-    string Comment,
-    int Rating
-) : IRequest<Result>;
-
+public record FeedbackCommand(Guid TeacherId, string Comment, int Rating) : IRequest<Result>;
 
 
 internal class FeedbackCommandHandler : IRequestHandler<FeedbackCommand, Result>

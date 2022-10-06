@@ -12,5 +12,8 @@ namespace Repetito.Infrastructure.Persistance
 
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Pupil> Pupils { get; set; }
+        public DbSet<Calendar> Calendars { get; set; }
+        public DbSet<CalendarEntry> CalendarEntries { get; set; }
     }
+
 }
