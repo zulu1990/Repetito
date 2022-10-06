@@ -69,11 +69,12 @@ namespace Repetito.Infrastructure.Persistance
             return foundEntity;
         }
 
-        public async Task<IList<T>> ListAsync(Expression<Func<T, bool>> expression = null, List<string> includes = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, int count = 0, bool trackChanges = false)
+        public async Task<IList<T>> ListAsync(Expression<Func<T, bool>> expression = null, string includes = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, int count = 0, bool trackChanges = false)
         {
             IQueryable<T> query = _dbSet;
 
-            includes?.ForEach(x => query.Include(x));
+            var includesList = includes?.Split(',').ToList();
+            includesList?.ForEach(x => query.Include(x));
 
             if (expression != null)
                 query = query.Where(expression);
@@ -89,12 +90,15 @@ namespace Repetito.Infrastructure.Persistance
             return result;
         }
 
-        public async Task<T> GetByExpression(Expression<Func<T, bool>> expression, List<string> includes = null, bool trackChanges = false)
+        public async Task<T> GetByExpression(Expression<Func<T, bool>> expression, string? includes, bool trackChanges = false)
         {
             IQueryable<T> query = _dbSet;
-            if (includes != null)
+
+            var includesList = includes?.Split(',').ToList();
+
+            if (includesList != null)
             {
-                query = includes.Aggregate(query, (current, include) => current.Include(include));
+                query = includesList.Aggregate(query, (current, includesList) => current.Include(includesList));
             }
 
             var item = trackChanges ? await query.FirstOrDefaultAsync(expression) : await query.AsNoTracking().FirstOrDefaultAsync(expression);

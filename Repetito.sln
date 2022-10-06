@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repetito", "Repetito\Repetito.csproj", "{52372228-941F-4E23-8A06-B8DF7D469D72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repetito", "Repetito\Repetito.csproj", "{52372228-941F-4E23-8A06-B8DF7D469D72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repetito.Contracts", "Repetito.Contracts\Repetito.Contracts.csproj", "{05606BEC-6BF4-4288-9CE3-ABF344D1CCC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repetito.Contracts", "Repetito.Contracts\Repetito.Contracts.csproj", "{05606BEC-6BF4-4288-9CE3-ABF344D1CCC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repetito.Domain", "Repetito.Domain\Repetito.Domain.csproj", "{A346BB47-7635-4E23-9956-956F17C45C38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repetito.Domain", "Repetito.Domain\Repetito.Domain.csproj", "{A346BB47-7635-4E23-9956-956F17C45C38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repetito.Infrastructure", "Repetito.Infrastructure\Repetito.Infrastructure.csproj", "{A3380BE5-2D2F-469B-9384-94ED21A59584}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repetito.Infrastructure", "Repetito.Infrastructure\Repetito.Infrastructure.csproj", "{A3380BE5-2D2F-469B-9384-94ED21A59584}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repetito.Application", "Repetito.Application\Repetito.Application.csproj", "{FF4FE7BA-9DD3-46EE-9378-4277DA2100F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repetito.Application", "Repetito.Application\Repetito.Application.csproj", "{FF4FE7BA-9DD3-46EE-9378-4277DA2100F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

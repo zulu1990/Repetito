@@ -14,8 +14,7 @@ public interface IGenericRepository<T> where T : BaseEntity
     Result Update(T entity);
     Task<T> GetById(Guid id);
 
-    Task<IList<T>> ListAsync(Expression<Func<T, bool>> expression = null, List<string> includes = null,
-        Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, int count = 0, bool trackChanges = false);
+    Task<IList<T>> ListAsync(Expression<Func<T, bool>> expression = null, string includes = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, int count = 0, bool trackChanges = false);
 
-    Task<T> GetByExpression(Expression<Func<T, bool>> expression, List<string> includes = null, bool trackChanges = false);
+    Task<T> GetByExpression(Expression<Func<T, bool>> expression, string includes = null, bool trackChanges = false);
 }

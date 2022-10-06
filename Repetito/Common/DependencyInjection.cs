@@ -11,6 +11,7 @@ public static class DependencyInjection
         ops.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles);
 
         services.AddEndpointsApiExplorer();
+
         services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc("v1", new OpenApiInfo { Title = "xD_3._14.WebApi", Version = "v1" });
@@ -24,7 +25,7 @@ public static class DependencyInjection
                 Scheme = "Bearer"
 
             });
-
+            
             c.AddSecurityRequirement(new OpenApiSecurityRequirement()
             {
                 {

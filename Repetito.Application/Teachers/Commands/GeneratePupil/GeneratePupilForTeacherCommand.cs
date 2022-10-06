@@ -52,7 +52,7 @@ namespace Repetito.Application.Teachers.Commands.GeneratePupil
 
                 await _pupilsRepository.Add(pupil);
 
-                var teacher = await _teacherRepository.GetByExpression(x => x.Id == request.TeacherId, includes: new List<string> { "Pupils" }, trackChanges: true);
+                var teacher = await _teacherRepository.GetByExpression(x => x.Id == request.TeacherId, includes: "Pupils", trackChanges: true);
                 teacher.Pupils.Add(pupil);
 
                 await _unitOfWork.CommitAsync();

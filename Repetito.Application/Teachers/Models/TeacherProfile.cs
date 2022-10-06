@@ -1,8 +1,13 @@
 ﻿using Repetito.Domain.Enums;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Repetito.Domain.Entities
+namespace Repetito.Application.Teachers.Models
 {
-    public class Teacher : BaseEntity
+    public record TeacherProfile
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -10,13 +15,7 @@ namespace Repetito.Domain.Entities
         public Sex Sex { get; set; }
         public City City { get; set; }
         public string Subject { get; set; }
+        public double Rating { get; set; }
         public int Experience { get; set; }
-        public int Age { get; set; }
-        public byte[] PasswordHash { get; set; }
-        public byte[] PasswordSalt { get; set; }
-
-        public ICollection<Pupil> Pupils { get; set; }
-
-        public ICollection<Feedback> Feedbacks { get; set; }
     }
 }

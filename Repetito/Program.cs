@@ -18,12 +18,13 @@ var app = builder.Build();
     app.UseMiddleware<ExceptionHandlingMiddleware>();
     if (app.Environment.IsDevelopment())
     {
+        app.UseStaticFiles();
         app.UseSwagger();
-        app.UseSwaggerUI();
+        app.UseSwaggerUI(x=>x.InjectStylesheet("/swagger/ui/custom.css"));
     }
 
     app.UseHttpsRedirection();
-
+    
     app.UseAuthentication();
     app.UseAuthorization();
     app.MapControllers();

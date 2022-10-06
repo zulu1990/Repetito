@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\swagger\ui\custom.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.9">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -18,6 +22,10 @@
     <ProjectReference Include="..\Repetito.Application\Repetito.Application.csproj" />
     <ProjectReference Include="..\Repetito.Contracts\Repetito.Contracts.csproj" />
     <ProjectReference Include="..\Repetito.Infrastructure\Repetito.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="wwwroot\swagger\ui\custom.css" />
   </ItemGroup>
 
 </Project>

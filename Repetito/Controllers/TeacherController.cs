@@ -45,7 +45,6 @@ public class TeacherController : ControllerBase
         return Ok();
     }
 
-
     [Authorize]
     [HttpPost("generate-pupils")]
     public async Task<IActionResult> TempPupilCreation()
@@ -64,6 +63,7 @@ public class TeacherController : ControllerBase
     public async Task<IActionResult> GetProfile()
     {
         var teacherId = HttpContext.GetUserId();
+
         var query = new GetProfileQuery(teacherId);
 
         var response = await _mediator.Send(query);
@@ -73,4 +73,23 @@ public class TeacherController : ControllerBase
     }
 
 
+
+    [HttpGet("get-teachers")]
+    public async Task<IActionResult> GetTeachers(TeacherSearchParams teacherSearchParams)
+    {
+        var teacherSeachQuery = new TeacherSearchQuery()
+        {
+            Citis = teacherSearchParams.Citis, 
+            Sex = teacherSearchParams.Sex, 
+            Experience =teacherSearchParams.Experience, 
+            Subject = teacherSearchParams.Subject, 
+            MaxAge = teacherSearchParams.MaxAge,
+            MinAge = teacherSearchParams.MinAge
+        };
+
+
+
+        var response = await _mediator.Send(teacherSeachQuery);
+        return Ok(response.Data);
+    }
 }
