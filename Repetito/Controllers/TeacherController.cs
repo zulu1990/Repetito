@@ -5,7 +5,8 @@ using Repetito.Application.Teachers.Commands.GeneratePupil;
 using Repetito.Application.Teachers.Models;
 using Repetito.Application.Teachers.Queries;
 using Repetito.Common;
-using Repetito.Contracts.Teacher;
+using Repetito.Contracts.General;
+using Repetito.Contracts.TeacherContracts;
 
 
 
@@ -68,7 +69,13 @@ public class TeacherController : ControllerBase
 
         var response = await _mediator.Send(query);
 
-        return Ok(response);
+        if(response.Success)
+        {
+            var result = new TeacherFullProfile(response.Data);
+            return Ok(result);
+        }
+
+        return BadRequest(response.ErrorMessage);
 
     }
 

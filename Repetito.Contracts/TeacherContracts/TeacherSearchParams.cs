@@ -1,6 +1,6 @@
 ﻿using Repetito.Domain.Enums;
 
-namespace Repetito.Contracts.Teacher;
+namespace Repetito.Contracts.TeacherContracts;
 
 public record TeacherSearchParams
 {

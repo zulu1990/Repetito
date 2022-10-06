@@ -73,7 +73,7 @@ namespace Repetito.Infrastructure.Persistance
         {
             IQueryable<T> query = _dbSet;
 
-            var includesList = includes?.Split(',').ToList();
+            var includesList = includes?.Split(", ").ToList();
             includesList?.ForEach(x => query.Include(x));
 
             if (expression != null)
@@ -94,7 +94,7 @@ namespace Repetito.Infrastructure.Persistance
         {
             IQueryable<T> query = _dbSet;
 
-            var includesList = includes?.Split(',').ToList();
+            var includesList = includes?.Split(", ").ToList();
 
             if (includesList != null)
             {
