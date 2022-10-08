@@ -14,5 +14,6 @@ namespace Repetito.Domain.Entities
 
 
         public List<Teacher> Teachers { get; set; }
+        public ICollection<CalendarEntry> Calendar { get; set; }
     }
 }

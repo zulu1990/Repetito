@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using Repetito.Application.Common.Persistance;
-using Repetito.Application.Teachers.Models;
 using Repetito.Domain;
 using Repetito.Domain.Entities;
 using Repetito.Domain.Enums;

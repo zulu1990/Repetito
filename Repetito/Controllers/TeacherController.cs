@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Repetito.Application.Teachers.Commands.Edit;
 using Repetito.Application.Teachers.Commands.GeneratePupil;
 using Repetito.Application.Teachers.Models;
 using Repetito.Application.Teachers.Queries;
@@ -27,9 +28,21 @@ public class TeacherController : ControllerBase
 
     [Authorize]
     [HttpPost("edit-info")]
-    public async Task<IActionResult> Edit()
+    public async Task<IActionResult> Edit(EditTeacherModel editTeacherModel)
     {
         var teacherId = HttpContext.GetUserId();
+
+        var editTeacherCommand = new EditTeacherCommand
+        {
+            TeacherId = teacherId,
+            FirstName = editTeacherModel.FirstName,
+            LastName = editTeacherModel.LastName,
+            Subject = editTeacherModel.Subject,
+            Experience = editTeacherModel.Experience,
+            Age = editTeacherModel.Age
+        };
+
+        var result = await _mediator.Send(editTeacherCommand);
 
         return Ok();
     }

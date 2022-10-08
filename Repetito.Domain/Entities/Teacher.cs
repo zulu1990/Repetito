@@ -15,7 +15,7 @@ namespace Repetito.Domain.Entities
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
 
-        public Calendar Calendar { get; set; }
+        public ICollection<CalendarEntry> CalendarEntries { get; set; }
 
         public ICollection<Pupil> Pupils { get; set; }
 

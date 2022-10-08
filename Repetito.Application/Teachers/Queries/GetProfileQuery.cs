@@ -19,7 +19,7 @@ internal class GetProfileQueryHandler : IRequestHandler<GetProfileQuery, Result<
 
     public async Task<Result<Teacher>> Handle(GetProfileQuery request, CancellationToken cancellationToken)
     {
-        var teacher = await _teacherRepository.GetByExpression(x=> x.Id == request.TeacherId, includes: "Pupils, Feedbacks");
+        var teacher = await _teacherRepository.GetByExpression(x=> x.Id == request.TeacherId, includes: "Pupils, Feedbacks, CalendarEntries");
 
         return teacher is null ? Result<Teacher>.Fail("Not Found") : Result<Teacher>.Succeed(teacher);
     }
