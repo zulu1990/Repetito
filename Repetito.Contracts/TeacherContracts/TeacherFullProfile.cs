@@ -43,7 +43,7 @@ public record TeacherFullProfile
         var calendar = new Dictionary<DayOfWeek, ICollection<CalendarEntryDto>>();
         foreach (var item in calendarEntries)
         {
-            var entry = new CalendarEntryDto(item.StartDate, item.EndDate, item.PupilId);
+            var entry = new CalendarEntryDto(item.StartDate, item.EndDate, item.PupilId, item.Id);
             if (calendar.TryGetValue(item.Day, out var cal))
                 cal.Add(entry);
             

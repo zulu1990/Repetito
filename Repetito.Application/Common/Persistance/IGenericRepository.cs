@@ -10,7 +10,7 @@ public interface IGenericRepository<T> where T : BaseEntity
     Task AddRange(IEnumerable<T> entities);
 
     Result DeleteEntity(T entity);
-    Task<Result> DeleteById(long id);
+    Task<Result> DeleteById(Guid id);
     Result Update(T entity);
     Task<T> GetById(Guid id);
 

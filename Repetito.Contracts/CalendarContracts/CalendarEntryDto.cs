@@ -3,5 +3,6 @@
 public record CalendarEntryDto(
     string StartDate,
     string EndDate,
-    Guid? PupilId
+    Guid? PupilId,
+    Guid CalendarId
 );

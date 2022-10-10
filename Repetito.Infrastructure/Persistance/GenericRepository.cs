@@ -40,7 +40,7 @@ namespace Repetito.Infrastructure.Persistance
             }
         }
 
-        public async Task<Result> DeleteById(long id)
+        public async Task<Result> DeleteById(Guid id)
         {
             var entity = await _dbSet.FindAsync(id);
 

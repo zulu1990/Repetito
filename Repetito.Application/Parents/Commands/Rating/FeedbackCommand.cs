@@ -25,7 +25,6 @@ internal class FeedbackCommandHandler : IRequestHandler<FeedbackCommand, Result>
     {
         try
         {
-            
             var teacher = await _teacherRepository.GetById(request.TeacherId);
 
             if (teacher == null)

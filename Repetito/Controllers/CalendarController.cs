@@ -19,7 +19,6 @@ public class CalendarController : ControllerBase
     }
 
 
-
     [Authorize]
     [HttpGet("my-calendar")]
     public async Task<IActionResult> GetMyCalendar()
@@ -53,4 +52,17 @@ public class CalendarController : ControllerBase
 
         return Ok();
     }
+
+    [Authorize]
+    [HttpDelete("delete")]
+    public async Task<IActionResult> DeleteCalendar(Guid calendarId)
+    {
+        var deleteCommand = new DeleteCalendarEntryCommand(calendarId);
+        var result = await _mediator.Send(deleteCommand);
+
+        return result.Success ? NoContent() : BadRequest(result.ErrorMessage);
+
+    }
+
+    //TODO DELETES CALENDAR FORM TEACHER AND PUPIL REGISTRY
 }
